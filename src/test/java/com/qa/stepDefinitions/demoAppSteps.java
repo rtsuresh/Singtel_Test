@@ -20,8 +20,8 @@ public class demoAppSteps {
         ToDoMVCHome.createEntryToDoList(strItemText);
     }
 
-    @Then("I check if the added item {string} is displayed in the TO DO list")
-    public void I_check_if_the_added_item_is_displayed_in_the_to_do_list(String strItemText) throws Exception {
+    @Then("I check if the item {string} is displayed in the TO DO list")
+    public void I_check_if_the_item_is_displayed_in_the_to_do_list(String strItemText) throws Exception {
         ToDoMVCHome.checkItemAddedinList(strItemText);
     }
 
@@ -51,6 +51,16 @@ public class demoAppSteps {
     @Then("I check if the added item {string} is removed in the TO DO list")
     public void i_check_if_the_added_item_is_removed_in_the_TO_DO_list(String strItemText) {
         ToDoMVCHome.validateClearedItem(strItemText);
+    }
+
+    @Then("I filter by Active")
+    public void i_filter_by_active() {
+        ToDoMVCHome.filterBy("Active");
+    }
+
+    @Then("I filter by Completed")
+    public void i_filter_by_completed() {
+        ToDoMVCHome.filterBy("Completed");
     }
 
 

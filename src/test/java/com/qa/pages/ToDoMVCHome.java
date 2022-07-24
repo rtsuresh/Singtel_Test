@@ -83,4 +83,15 @@ public class ToDoMVCHome {
         assertThat(isItemPresent,is(true));
     }
 
+    public void filterBy(String strFilter){
+        switch (strFilter.toUpperCase()){
+            case "ACTIVE":
+                TestBase.driver.findElement(By.linkText("Active")).click();
+                break;
+            case "COMPLETED":
+                TestBase.driver.findElement(By.linkText("Completed")).click();
+                break;
+        }
+    }
+
 }
