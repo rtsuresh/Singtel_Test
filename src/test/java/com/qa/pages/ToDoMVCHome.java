@@ -3,7 +3,9 @@ package com.qa.pages;
 import com.qa.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -48,6 +50,27 @@ public class ToDoMVCHome {
         TestBase.driver.findElement(By.xpath("//label[text()='"+strToDoItem+"']/../input[@type='checkbox']")).click();
         isItemClicked = true;
         assertThat(isItemClicked,is(true));
+    }
+
+    public void clearItemAddedinList(String strToDoItem) {
+        //Instantiate Action Class
+        Actions actions = new Actions(TestBase.driver);
+        WebElement addedText = TestBase.driver.findElement(By.xpath("//label[text()='"+strToDoItem+"']"));
+        actions.moveToElement(addedText).perform();
+        System.out.println("Done hover on added text");
+        TestBase.driver.findElement(By.xpath("//label[text()='"+strToDoItem+"']/../button[@class='destroy']")).click();
+     }
+
+    public void validateClearedItem(String strToDoItem) {
+        boolean isItemClear = false;
+        try {
+            ToDoList.findElement(By.xpath("//label[text()='" + strToDoItem + "']")).isDisplayed();
+        }
+        catch(NoSuchElementException e)
+        {
+            isItemClear = true;
+        }
+        assertThat(isItemClear,is(true));
     }
 
     public void checkCompletedItem(String strToDoItem) {

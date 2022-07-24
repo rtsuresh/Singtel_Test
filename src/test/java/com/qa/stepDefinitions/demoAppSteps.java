@@ -25,8 +25,8 @@ public class demoAppSteps {
         ToDoMVCHome.checkItemAddedinList(strItemText);
     }
 
-    @Given("I want to add and complete item {string} in TO DO list")
-    public void i_want_to_add_and_complete_item_in_TO_DO_list(String strItemText) {
+    @Given("I have added item {string} in TO DO list")
+    public void i_have_added_item_in_TO_DO_list(String strItemText) {
         ToDoMVCHome.checkEmptyTextBox();
         ToDoMVCHome.createEntryToDoList(strItemText);
         ToDoMVCHome.checkItemAddedinList(strItemText);
@@ -41,6 +41,18 @@ public class demoAppSteps {
     public void i_check_if_the_added_item_is_completed_in_the_TO_DO_list(String strItemText) {
         ToDoMVCHome.checkCompletedItem(strItemText);
     }
+
+
+    @When("I clear a TO DO item text {string}")
+    public void i_clear_a_TO_DO_item_text(String strItemText) {
+        ToDoMVCHome.clearItemAddedinList(strItemText);
+    }
+
+    @Then("I check if the added item {string} is removed in the TO DO list")
+    public void i_check_if_the_added_item_is_removed_in_the_TO_DO_list(String strItemText) {
+        ToDoMVCHome.validateClearedItem(strItemText);
+    }
+
 
 
 

@@ -26,9 +26,18 @@ Feature: To Do MVC functionality
 
 	@Smoke
 	Scenario Outline: Validate adding 1 item to TO DO list and completing the same
-		Given I want to add and complete item "<ItemText>" in TO DO list
+		Given I have added item "<ItemText>" in TO DO list
 		When I click on a TO DO item text "<ItemText>"
 		Then I check if the added item "<ItemText>" is completed in the TO DO list
 		Examples:
 			|ItemText|
-			|This is my first TO DO list|
+			|This is my first TO DO list to be completed|
+
+	@Smoke
+	Scenario Outline: Validate adding 1 item to TO DO list and deleting the same
+		Given I have added item "<ItemText>" in TO DO list
+		When I clear a TO DO item text "<ItemText>"
+		Then I check if the added item "<ItemText>" is removed in the TO DO list
+		Examples:
+			|ItemText|
+			|This is my first TO DO list to be deleted|
