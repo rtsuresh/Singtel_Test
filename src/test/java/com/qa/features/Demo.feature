@@ -71,3 +71,20 @@ Feature: To Do MVC functionality
 		Examples:
 			|ItemText1|ItemText2|
 			|This is my first TO DO list|This is my second TO DO list|
+
+
+	@Smoke
+	Scenario Outline: Check filter 'All'
+		Given I want to add items into TO DO list
+		When I enter a TO DO item text "<ItemText1>"
+		And I enter a TO DO item text "<ItemText2>"
+		And I check if the item "<ItemText1>" is displayed in the TO DO list
+		And I check if the item "<ItemText2>" is displayed in the TO DO list
+		And I click on a TO DO item text "<ItemText1>"
+		And I check if the added item "<ItemText1>" is completed in the TO DO list
+		Then I filter by All
+		And I check if the item "<ItemText1>" is displayed in the TO DO list
+		And I check if the item "<ItemText2>" is displayed in the TO DO list
+		Examples:
+			|ItemText1|ItemText2|
+			|This is my first TO DO list|This is my second TO DO list|

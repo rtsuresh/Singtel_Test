@@ -63,6 +63,11 @@ public class demoAppSteps {
         ToDoMVCHome.filterBy("Completed");
     }
 
+    @Then("I filter by All")
+    public void i_filter_by_all() {
+        ToDoMVCHome.filterBy("All");
+    }
+
 
 
 
